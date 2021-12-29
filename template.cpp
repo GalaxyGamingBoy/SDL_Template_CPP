@@ -11,6 +11,13 @@ const char* ConvertStringToChars(std::string str) {
     return str.c_str();
 }
 
+const char* CreateFilePath(std::string path, std::string fileName) {
+    const char* SStartPath = ConvertStringToChars(path);
+    char* startPath = strdup(SStartPath);
+    const char* file = ConvertStringToChars(fileName);
+    return strcat(startPath, file);
+}
+
 void ReadJsonSettingsFile() {
     std::ifstream file("settings.json");
     kAppSettings = nlohmann::json::parse(file);
